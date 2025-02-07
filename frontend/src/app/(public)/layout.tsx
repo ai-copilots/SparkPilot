@@ -52,7 +52,7 @@ export default async function PublicLayout({
                 </Link> */}
               </div>
               <div className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} AI Copilots
+                © {new Date().getFullYear()} AI-Copilots Under MIT License
               </div>
             </div>
           </footer>
