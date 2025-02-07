@@ -147,6 +147,7 @@ frontend/
 │   ├── styles/         # Global styles
 │   │   └── globals.css
 │   ├── types/         # TypeScript types
+│   │   └── next-auth.d.ts  # Next.js Auth type definitions
 │   └── utils/         # Utility functions
 ├── tailwind.config.ts  # Tailwind CSS config
 └── tsconfig.json      # TypeScript config
