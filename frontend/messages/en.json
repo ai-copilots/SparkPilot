@@ -1,0 +1,26 @@
+{
+  "Metadata": {
+      "title": "SparkPilot - AI Learning Copilot",
+      "description": "An intelligent AI-powered assistant designed to ignite learning and curiosity with multi-language support."
+  },
+  "WelcomeToast": {
+      "title": "Welcome to SparkPilot",
+      "description": "Empower your learning journey with AI-driven insights and personalized guidance."
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "switchTo": "Switch to {locale}",
+    "locales": {
+      "en": "English",
+      "zh": "Chinese"
+    }
+  },
+  "ThemeSwitcher": {
+    "label": "Toggle theme",
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "Metadata": {
+        "title": "SparkPilot - AI 学习助手",
+        "description": "一个智能的AI助手，旨在激发学习兴趣和好奇心，支持多语言。"
+    },
+    "WelcomeToast": {
+        "title": "欢迎使用 SparkPilot",
+        "description": "通过AI驱动的洞察和个性化指导，激发你的学习之旅。"
+    },
+    "LocaleSwitcher": {
+        "label": "切换语言",
+        "switchTo": "切换到{locale}",
+        "locales": {
+            "en": "英语",
+            "zh": "中文"
+        }
+    },
+    "ThemeSwitcher": {
+        "label": "切换主题",
+        "theme": {
+            "light": "浅色",
+            "dark": "深色",
+            "system": "系统"
+        }
+    }
+}
+  
