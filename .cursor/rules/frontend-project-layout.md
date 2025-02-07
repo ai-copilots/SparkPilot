@@ -2,7 +2,7 @@
 
 ## Current Structure
 ```
-.
+frontend/
 ├── README.md                 # Project documentation
 ├── bun.lockb                # Bun lockfile
 ├── components.json          # Components JSON
