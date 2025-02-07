@@ -24,6 +24,7 @@
 │   │   │   ├── error.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── legal
+│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── privacy
 │   │   │   │   │   ├── contents
 │   │   │   │   │   │   ├── en.privacy.mdx
@@ -122,7 +123,7 @@
 ├── tailwind.config.ts     # Tailwind CSS configuration
 └── tsconfig.json          # TypeScript configuration
 
-28 directories, 91 files
+30 directories, 96 files
 ```
 
 ## Directory Structure Details
