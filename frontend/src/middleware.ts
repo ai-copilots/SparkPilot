@@ -13,18 +13,14 @@ export const config = {
   matcher: [
     /*
      * 只匹配需要保护的路由:
-     * 1. /dashboard/* - 仪表板路由
-     * 2. /blogs/* - 博客路由
-     * 3. 其他protected组下的路由
+     * - /(protected)/* - 所有protected路由组下的页面
      * 
      * 自动排除:
-     * - /auth/* - 认证相关页面
-     * - /legal/* - 法律页面
-     * - / - 首页
-     * - 其他public路由
+     * - /(public)/* - 所有public路由组下的页面
+     * - /api/* - API路由
+     * - /_next/* - Next.js系统文件
+     * - /favicon.ico等静态文件
      */
-    '/dashboard/:path*',
-    '/blogs/:path*',
     '/(protected)/:path*'
   ]
 }
