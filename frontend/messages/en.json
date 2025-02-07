@@ -27,5 +27,14 @@
     "title": "Page Not Found",
     "description": "Sorry, the page you are looking for does not exist.",
     "returnHome": "Return to Home"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "Sorry, there was an error processing your request.",
+    "tryAgain": "Try Again"
+  },
+  "Loading": {
+    "title": "Loading",
+    "description": "Please wait..."
   }
 }

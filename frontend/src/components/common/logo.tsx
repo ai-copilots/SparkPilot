@@ -4,7 +4,7 @@
  * 特性:
  * - 支持自定义尺寸
  * - 保持宽高比
- * - 支持颜色主题
+ * - 支持明暗主题自适应
  * - 可访问性支持
  */
 import { cn } from "@/lib/utils";
@@ -30,30 +30,34 @@ export function Logo({ className, ...props }: LogoProps) {
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
-          className="text-zinc-400 opacity-50"
+          className="text-zinc-400 dark:text-zinc-600 opacity-50"
         />
         <path
           d="M12 32 Q32 42, 52 32 Q32 22, 12 32"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
-          className="text-zinc-400 opacity-50"
+          className="text-zinc-400 dark:text-zinc-600 opacity-50"
         />
 
-        {/* Synaptic nodes with gradient */}
+        {/* Synaptic nodes with theme-aware gradients */}
         <defs>
-          <radialGradient id="nodeGradient" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" className="text-zinc-900" />
-            <stop offset="100%" className="text-zinc-800" />
+          <radialGradient id="nodeGradientLight" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="rgb(24 24 27)" />
+            <stop offset="100%" stopColor="rgb(39 39 42)" />
+          </radialGradient>
+          <radialGradient id="nodeGradientDark" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="rgb(250 250 250)" />
+            <stop offset="100%" stopColor="rgb(228 228 231)" />
           </radialGradient>
         </defs>
 
-        {/* Main nodes */}
-        <circle cx="32" cy="32" r="3" fill="url(#nodeGradient)" />
-        <circle cx="32" cy="12" r="3" fill="url(#nodeGradient)" />
-        <circle cx="32" cy="52" r="3" fill="url(#nodeGradient)" />
-        <circle cx="12" cy="32" r="3" fill="url(#nodeGradient)" />
-        <circle cx="52" cy="32" r="3" fill="url(#nodeGradient)" />
+        {/* Main nodes with theme-aware fill */}
+        <circle cx="32" cy="32" r="3" className="fill-zinc-900 dark:fill-zinc-100" />
+        <circle cx="32" cy="12" r="3" className="fill-zinc-900 dark:fill-zinc-100" />
+        <circle cx="32" cy="52" r="3" className="fill-zinc-900 dark:fill-zinc-100" />
+        <circle cx="12" cy="32" r="3" className="fill-zinc-900 dark:fill-zinc-100" />
+        <circle cx="52" cy="32" r="3" className="fill-zinc-900 dark:fill-zinc-100" />
 
         {/* Dynamic connection paths */}
         <path
@@ -61,7 +65,7 @@ export function Logo({ className, ...props }: LogoProps) {
           fill="none"
           stroke="currentColor"
           strokeWidth="1"
-          className="text-zinc-600"
+          className="text-zinc-600 dark:text-zinc-400"
         />
 
         {/* Neuron activation rings */}
@@ -73,7 +77,7 @@ export function Logo({ className, ...props }: LogoProps) {
           stroke="currentColor"
           strokeWidth="0.5"
           strokeDasharray="1,3"
-          className="text-zinc-700"
+          className="text-zinc-700 dark:text-zinc-400"
         />
         <circle
           cx="32"
@@ -83,7 +87,7 @@ export function Logo({ className, ...props }: LogoProps) {
           stroke="currentColor"
           strokeWidth="0.5"
           strokeDasharray="1,3"
-          className="text-zinc-700"
+          className="text-zinc-700 dark:text-zinc-400"
         />
 
         {/* Pulse effect */}
@@ -94,7 +98,7 @@ export function Logo({ className, ...props }: LogoProps) {
           fill="none"
           stroke="currentColor"
           strokeWidth="0.75"
-          className="text-zinc-600 opacity-30"
+          className="text-zinc-600 dark:text-zinc-400 opacity-30"
         >
           <animate
             attributeName="r"
@@ -111,11 +115,11 @@ export function Logo({ className, ...props }: LogoProps) {
         </circle>
       </g>
 
-      {/* Text part */}
+      {/* Text part with theme-aware fill */}
       <text
         x="90"
         y="48"
-        className="text-zinc-900 dark:text-zinc-100"
+        className="fill-zinc-900 dark:fill-zinc-100 select-none"
         style={{
           fontFamily: 'system-ui, -apple-system, sans-serif',
           fontSize: '36px',
