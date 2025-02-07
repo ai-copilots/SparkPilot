@@ -31,7 +31,34 @@
   "Error": {
     "title": "Something went wrong",
     "description": "Sorry, there was an error processing your request.",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "returnHome": "Return to Home",
+    "auth": {
+      "default": {
+        "code": "AUTH_ERROR",
+        "description": "An authentication error occurred. Please try again."
+      },
+      "Configuration": {
+        "code": "AUTH_CONFIG_ERROR",
+        "description": "There is a problem with the server configuration. Please contact support."
+      },
+      "AccessDenied": {
+        "code": "AUTH_ACCESS_DENIED",
+        "description": "Access denied. You don't have permission to access this resource."
+      },
+      "Verification": {
+        "code": "AUTH_VERIFICATION_ERROR",
+        "description": "The verification token has expired or is invalid. Please try signing in again."
+      },
+      "OAuthSignin": {
+        "code": "AUTH_OAUTH_ERROR",
+        "description": "Error occurred while signing in with OAuth provider. Please try again."
+      },
+      "OAuthCallback": {
+        "code": "AUTH_OAUTH_CALLBACK_ERROR",
+        "description": "Error occurred while processing the OAuth callback. Please try again."
+      }
+    }
   },
   "Loading": {
     "title": "Loading",
@@ -46,6 +73,14 @@
       "service": "Terms of Service",
       "and": "and",
       "privacy": "Privacy Policy"
+    },
+    "error": {
+      "Configuration": "There is a problem with the server configuration. Please contact support.",
+      "AccessDenied": "Access denied. You don't have permission to access this resource.",
+      "Verification": "The verification token has expired or is invalid. Please try signing in again.",
+      "OAuthSignin": "Error occurred while signing in with OAuth provider. Please try again.",
+      "OAuthCallback": "Error occurred while processing the OAuth callback. Please try again.",
+      "default": "An authentication error occurred. Please try again."
     }
   }
 }

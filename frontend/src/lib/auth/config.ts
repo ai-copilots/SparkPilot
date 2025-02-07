@@ -10,6 +10,7 @@ import { neo4jAdapter } from "./neo4j-adapter"
  * 2. Neo4j 适配器
  * 3. 认证处理程序
  * 4. 登录/登出方法
+ * 5. 错误处理
  */
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -24,8 +25,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   adapter: neo4jAdapter,
   pages: {
-    signIn: "/login",
-    error: "/error",
+    signIn: "/auth/login",
+    error: "/auth/error",
   },
   callbacks: {
     authorized: async ({ auth }) => {

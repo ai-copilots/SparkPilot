@@ -18,18 +18,26 @@
 │   └── logo.svg           # Logo image
 ├── src/                    # Source code
 │   ├── app/                # Next.js App Router
-│   │   ├── (protected)
+│   │   ├── (protected)    # Protected routes (require auth)
 │   │   │   ├── blogs
 │   │   │   │   └── page.tsx
 │   │   │   ├── dashboard
 │   │   │   │   └── page.tsx
 │   │   │   └── layout.tsx
-│   │   ├── (public)
+│   │   ├── (public)       # Public routes
 │   │   │   ├── _components
 │   │   │   │   └── welcome-toast.tsx
+│   │   │   ├── auth      # Authentication pages
+│   │   │   │   ├── error
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── login
+│   │   │   │       ├── _components
+│   │   │   │       │   ├── login-form.tsx
+│   │   │   │       │   └── oauth-button.tsx
+│   │   │   │       └── page.tsx
 │   │   │   ├── error.tsx
 │   │   │   ├── layout.tsx
-│   │   │   ├── legal
+│   │   │   ├── legal     # Legal pages
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── privacy
 │   │   │   │   │   ├── contents
@@ -42,25 +50,20 @@
 │   │   │   │       │   └── zh.terms.mdx
 │   │   │   │       └── page.tsx
 │   │   │   ├── loading.tsx
-│   │   │   ├── login
-│   │   │   │   ├── _components
-│   │   │   │   │   ├── login-form.tsx
-│   │   │   │   │   └── oauth-button.tsx
-│   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
-│   │   ├── api
+│   │   ├── api           # API routes
 │   │   │   └── auth
 │   │   │       └── [...nextauth]
 │   │   │           └── route.ts
-│   │   ├── favicon.ico   # Site favicon
-│   │   ├── layout.tsx    # Root layout
+│   │   ├── favicon.ico
+│   │   ├── layout.tsx
 │   │   └── not-found.tsx
-│   ├── components/       # Reusable components
-│   │   ├── common
+│   ├── components/        # Reusable components
+│   │   ├── common        # Common components
 │   │   │   └── logo.tsx
-│   │   ├── layout
+│   │   ├── layout       # Layout components
 │   │   │   └── theme-provider.tsx
-│   │   └── ui           # UI components (shadcn/ui)
+│   │   └── ui          # UI components (shadcn/ui)
 │   │       ├── accordion.tsx
 │   │       ├── alert-dialog.tsx
 │   │       ├── alert.tsx
@@ -111,43 +114,42 @@
 │   │       ├── toggle-group.tsx
 │   │       ├── toggle.tsx
 │   │       └── tooltip.tsx
-│   ├── constants/        # Constants and configurations
-│   ├── hooks/           # Custom React hooks
+│   ├── config/          # Configuration files
+│   │   └── neo4j.ts    # Neo4j database config
+│   ├── constants/       # Constants and enums
+│   ├── hooks/          # Custom React hooks
 │   │   ├── use-mobile.tsx
 │   │   └── use-toast.ts
-│   ├── lib/             # Utility library
-│   │   ├── auth
+│   ├── lib/            # Core libraries
+│   │   ├── auth       # Authentication
 │   │   │   ├── config.ts
 │   │   │   ├── index.ts
 │   │   │   └── neo4j-adapter.ts
 │   │   └── utils.ts
-│   ├── locales/         # Internationalization
+│   ├── locales/        # Internationalization
 │   │   ├── config.ts
 │   │   ├── requests.ts
 │   │   └── types.ts
-│   ├── mdx-components.tsx  # MDX components configuration
-│   ├── middleware.ts
-│   ├── scripts/         # Utility scripts
-│   ├── services/        # API services
-│   │   ├── locale
+│   ├── mdx-components.tsx  # MDX components
+│   ├── middleware.ts    # Next.js middleware
+│   ├── scripts/        # Utility scripts
+│   ├── services/       # External services
+│   │   ├── locale     # Locale service
 │   │   │   ├── constants.ts
 │   │   │   ├── cookie.ts
 │   │   │   ├── detect.ts
 │   │   │   └── index.ts
-│   │   └── neo4j
+│   │   └── neo4j      # Neo4j service
 │   │       ├── index.ts
 │   │       ├── init.ts
 │   │       └── query.ts
-│   ├── stores/          # State management
-│   ├── styles/          # Styling
-│   │   └── globals.css  # Global styles
-│   ├── types/          # TypeScript type definitions
-│   └── utils/          # Utility functions
-├── tailwind.config.ts     # Tailwind CSS configuration
-└── tsconfig.json          # TypeScript configuration
-
-38 directories, 107 files
-```
+│   ├── stores/         # State management
+│   ├── styles/         # Global styles
+│   │   └── globals.css
+│   ├── types/         # TypeScript types
+│   └── utils/         # Utility functions
+├── tailwind.config.ts  # Tailwind CSS config
+└── tsconfig.json      # TypeScript config
 
 ## Directory Structure Details
 
@@ -167,7 +169,7 @@
     - `blogs/`: 博客页面
     - `dashboard/`: 仪表盘页面
   - `(public)/`: 公开路由
-    - `login/`: 登录页面
+    - `auth/`: 认证相关页面
     - `legal/`: 法律相关页面
   - `api/`: API 路由
     - `auth/`: 认证相关 API
@@ -191,27 +193,10 @@
 - `layout/`: 布局组件
 - `ui/`: UI 组件 (shadcn/ui)
 
-## Planned Structure
-```
-frontend/
-├── src/
-│   ├── app/                # Next.js App Router
-│   │   ├── (auth)/        # Auth related routes
-│   │   ├── (dashboard)/   # Dashboard routes
-│   │   └── (marketing)/   # Marketing pages
-│   ├── components/        # Shared components
-│   │   ├── ui/           # UI components
-│   │   └── features/     # Feature components
-│   ├── lib/              # Utility functions
-│   ├── types/            # TypeScript types
-│   └── styles/           # Component styles
-├── public/               # Static assets
-├── tests/               # Test files
-│   ├── unit/
-│   ├── integration/
-│   └── e2e/
-└── config/              # Configuration files
-```
+### 数据库服务 (`src/services/neo4j/`)
+- `index.ts`: 导出和初始化
+- `init.ts`: 数据库连接初始化
+- `query.ts`: 查询工具函数
 
 ## Update Command
 使用以下命令更新项目结构：
@@ -224,3 +209,4 @@ tree -I "node_modules|.git"
 - 认证相关代码集中在 `lib/auth` 目录
 - 使用 MDX 支持多语言内容
 - 完整的组件库支持
+- Neo4j 数据库集成

@@ -31,7 +31,34 @@
     "Error": {
         "title": "出错了",
         "description": "抱歉，处理您的请求时出现了错误。",
-        "tryAgain": "重试"
+        "tryAgain": "重试",
+        "returnHome": "返回首页",
+        "auth": {
+            "default": {
+                "code": "认证错误",
+                "description": "发生认证错误，请重试。"
+            },
+            "Configuration": {
+                "code": "配置错误",
+                "description": "服务器配置出现问题，请联系支持团队。"
+            },
+            "AccessDenied": {
+                "code": "访问被拒绝",
+                "description": "访问被拒绝，您没有权限访问此资源。"
+            },
+            "Verification": {
+                "code": "验证错误",
+                "description": "验证令牌已过期或无效，请重新登录。"
+            },
+            "OAuthSignin": {
+                "code": "OAuth 登录错误",
+                "description": "使用 OAuth 登录时发生错误，请重试。"
+            },
+            "OAuthCallback": {
+                "code": "OAuth 回调错误",
+                "description": "处理 OAuth 回调时发生错误，请重试。"
+            }
+        }
     },
     "Loading": {
         "title": "加载中",
@@ -46,6 +73,14 @@
             "service": "服务条款",
             "and": "和",
             "privacy": "隐私政策"
+        },
+        "error": {
+            "Configuration": "服务器配置出现问题，请联系支持团队。",
+            "AccessDenied": "访问被拒绝，您没有权限访问此资源。",
+            "Verification": "验证令牌已过期或无效，请重新登录。",
+            "OAuthSignin": "使用 OAuth 登录时发生错误，请重试。",
+            "OAuthCallback": "处理 OAuth 回调时发生错误，请重试。",
+            "default": "发生认证错误，请重试。"
         }
     }
 }
