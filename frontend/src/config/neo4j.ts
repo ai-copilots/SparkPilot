@@ -1,6 +1,15 @@
 import { z } from 'zod'
 
 /**
+ * Neo4j 配置类型
+ */
+export type Neo4jConfigType = {
+    uri: string
+    username: string
+    password: string
+}
+
+/**
  * Neo4j 配置模式定义
  */
 export const neo4jConfigSchema = z.object({
@@ -11,20 +20,24 @@ export const neo4jConfigSchema = z.object({
 
 /**
  * 验证 Neo4j 配置
- * @param env - 环境变量记录
+ * @param config - Neo4j 配置或环境变量
  * @returns 验证后的 Neo4j 配置
  */
-export function validateNeo4jConfig(env: Record<string, string | undefined>) {
-    const config = {
-        NEO4J_URI: env.NEO4J_URI,
-        NEO4J_USERNAME: env.NEO4J_USERNAME,
-        NEO4J_PASSWORD: env.NEO4J_PASSWORD,
+export function validateNeo4jConfig(config: Partial<Neo4jConfigType> | Record<string, string | undefined>): Neo4jConfigType {
+    // 处理环境变量格式
+    if ('NEO4J_URI' in config) {
+        const envConfig = neo4jConfigSchema.parse(config)
+        return {
+            uri: envConfig.NEO4J_URI,
+            username: envConfig.NEO4J_USERNAME,
+            password: envConfig.NEO4J_PASSWORD,
+        }
     }
-
-    return neo4jConfigSchema.parse(config)
-}
-
-/**
- * Neo4j 配置类型
- */
-export type Neo4jConfigType = z.infer<typeof neo4jConfigSchema> 
+    
+    // 处理直接配置格式
+    if (!config.uri || !config.username || !config.password) {
+        throw new Error('Missing required Neo4j configuration')
+    }
+    
+    return config as Neo4jConfigType
+} 

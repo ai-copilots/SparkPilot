@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/neo4j-adapter": "^2.7.4",
     "@hookform/resolvers": "^3.10.0",
     "@icons-pack/react-simple-icons": "^11.2.0",
     "@mdx-js/loader": "^3.1.0",

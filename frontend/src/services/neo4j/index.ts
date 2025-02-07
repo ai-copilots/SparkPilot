@@ -20,8 +20,8 @@ export async function initNeo4jDriver(config: Neo4jConfigType): Promise<Driver> 
 
     try {
         const driver = neo4j.driver(
-            config.NEO4J_URI,
-            neo4j.auth.basic(config.NEO4J_USERNAME, config.NEO4J_PASSWORD),
+            config.uri,
+            neo4j.auth.basic(config.username, config.password),
             {
                 // 生产环境下的最大连接池大小
                 maxConnectionPoolSize: process.env.NODE_ENV === 'production' ? 50 : 10,
@@ -57,10 +57,20 @@ export async function closeNeo4jDriver(): Promise<void> {
  * 获取 Neo4j 驱动实例
  * @returns Neo4j 驱动实例
  */
-export function getNeo4jDriver(): Driver {
-    if (!globalForNeo4j.neo4j?.driver) {
-        throw new Error('Neo4j 驱动未初始化')
+export function getDriver(): Driver {
+    if (!globalForNeo4j.neo4j) {
+        globalForNeo4j.neo4j = { driver: null }
     }
+
+    if (!globalForNeo4j.neo4j.driver) {
+        const config = validateNeo4jConfig(process.env)
+
+        globalForNeo4j.neo4j.driver = neo4j.driver(
+            config.uri,
+            neo4j.auth.basic(config.username, config.password)
+        )
+    }
+
     return globalForNeo4j.neo4j.driver
 }
 

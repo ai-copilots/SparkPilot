@@ -36,6 +36,17 @@
     "Loading": {
         "title": "加载中",
         "description": "请稍候..."
+    },
+    "Login": {
+        "title": "欢迎回来",
+        "description": "登录您的账户以继续",
+        "githubLogin": "使用 GitHub 登录",
+        "terms": {
+            "agreement": "继续使用即表示您同意我们的",
+            "service": "服务条款",
+            "and": "和",
+            "privacy": "隐私政策"
+        }
     }
 }
   

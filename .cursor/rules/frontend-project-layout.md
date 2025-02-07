@@ -17,8 +17,14 @@
 ├── public/                 # Static assets
 │   └── logo.svg           # Logo image
 ├── src/                    # Source code
-│   ├── app/               # Next.js 15 App Router
-│   │   ├── (public)/      # Public routes
+│   ├── app/                # Next.js App Router
+│   │   ├── (protected)
+│   │   │   ├── blogs
+│   │   │   │   └── page.tsx
+│   │   │   ├── dashboard
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (public)
 │   │   │   ├── _components
 │   │   │   │   └── welcome-toast.tsx
 │   │   │   ├── error.tsx
@@ -36,8 +42,16 @@
 │   │   │   │       │   └── zh.terms.mdx
 │   │   │   │       └── page.tsx
 │   │   │   ├── loading.tsx
+│   │   │   ├── login
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── login-form.tsx
+│   │   │   │   │   └── oauth-button.tsx
+│   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
-│   │   ├── api/          # API routes
+│   │   ├── api
+│   │   │   └── auth
+│   │   │       └── [...nextauth]
+│   │   │           └── route.ts
 │   │   ├── favicon.ico   # Site favicon
 │   │   ├── layout.tsx    # Root layout
 │   │   └── not-found.tsx
@@ -102,19 +116,28 @@
 │   │   ├── use-mobile.tsx
 │   │   └── use-toast.ts
 │   ├── lib/             # Utility library
+│   │   ├── auth
+│   │   │   ├── config.ts
+│   │   │   ├── index.ts
+│   │   │   └── neo4j-adapter.ts
 │   │   └── utils.ts
 │   ├── locales/         # Internationalization
 │   │   ├── config.ts
 │   │   ├── requests.ts
 │   │   └── types.ts
 │   ├── mdx-components.tsx  # MDX components configuration
+│   ├── middleware.ts
 │   ├── scripts/         # Utility scripts
 │   ├── services/        # API services
-│   │   └── locale
-│   │       ├── constants.ts
-│   │       ├── cookie.ts
-│   │       ├── detect.ts
-│   │       └── index.ts
+│   │   ├── locale
+│   │   │   ├── constants.ts
+│   │   │   ├── cookie.ts
+│   │   │   ├── detect.ts
+│   │   │   └── index.ts
+│   │   └── neo4j
+│   │       ├── index.ts
+│   │       ├── init.ts
+│   │       └── query.ts
 │   ├── stores/          # State management
 │   ├── styles/          # Styling
 │   │   └── globals.css  # Global styles
@@ -123,7 +146,7 @@
 ├── tailwind.config.ts     # Tailwind CSS configuration
 └── tsconfig.json          # TypeScript configuration
 
-30 directories, 96 files
+38 directories, 107 files
 ```
 
 ## Directory Structure Details
@@ -140,20 +163,33 @@
 
 ### Source Code (`src/`)
 - `app/`: Next.js App Router 目录
-  - `layout.tsx`: 根布局组件
-  - `page.tsx`: 首页组件
-  - `(public)/`: 公共路由
+  - `(protected)/`: 需要认证的路由
+    - `blogs/`: 博客页面
+    - `dashboard/`: 仪表盘页面
+  - `(public)/`: 公开路由
+    - `login/`: 登录页面
     - `legal/`: 法律相关页面
-      - `privacy/`: 隐私政策（多语言 MDX）
-      - `terms/`: 服务条款（多语言 MDX）
-  - `globals.css`: 全局样式
-  - `favicon.ico`: 网站图标
+  - `api/`: API 路由
+    - `auth/`: 认证相关 API
+  - `layout.tsx`: 根布局组件
+  - `not-found.tsx`: 404 页面
 
-### MDX Support
-- `mdx-components.tsx`: MDX 组件配置
-- 多语言 MDX 内容存放在各自路由的 `contents` 目录下
-  - `en.*.mdx`: 英文内容
-  - `zh.*.mdx`: 中文内容
+### 认证相关 (`src/lib/auth/`)
+- `config.ts`: Auth.js 配置
+- `index.ts`: 认证模块导出
+- `neo4j-adapter.ts`: Neo4j 适配器实现
+
+### 国际化支持
+- `messages/`: 翻译文件
+  - `en.json`: 英文翻译
+  - `zh.json`: 中文翻译
+- `src/locales/`: 国际化工具
+- `*.mdx`: 多语言内容文件
+
+### 组件库 (`src/components/`)
+- `common/`: 通用组件
+- `layout/`: 布局组件
+- `ui/`: UI 组件 (shadcn/ui)
 
 ## Planned Structure
 ```
@@ -184,7 +220,7 @@ tree -I "node_modules|.git"
 ```
 
 ## Notes
-- 使用 `src/` 目录组织所有源代码
-- 配置文件保持在根目录
-- 静态资源放在 `public/` 目录
-- 使用 App Router 的路由组织功能
+- 使用路由组 (`(protected)`, `(public)`) 组织路由和访问控制
+- 认证相关代码集中在 `lib/auth` 目录
+- 使用 MDX 支持多语言内容
+- 完整的组件库支持

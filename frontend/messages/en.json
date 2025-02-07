@@ -36,5 +36,16 @@
   "Loading": {
     "title": "Loading",
     "description": "Please wait..."
+  },
+  "Login": {
+    "title": "Welcome Back",
+    "description": "Sign in to your account to continue",
+    "githubLogin": "Continue with GitHub",
+    "terms": {
+      "agreement": "By continuing, you agree to our",
+      "service": "Terms of Service",
+      "and": "and",
+      "privacy": "Privacy Policy"
+    }
   }
 }
