@@ -10,6 +10,7 @@ import { formats } from '@/locales/config';
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { initializeNeo4j } from '@/services/neo4j/init'
 
 // 4. 当前目录模块
 
@@ -30,6 +31,10 @@ export async function generateMetadata(): Promise<Metadata> {
     description: t('description')
   };
 }
+
+// 初始化 Neo4j
+initializeNeo4j()
+    .catch(console.error)
 
 export default async function RootLayout({
   children,
