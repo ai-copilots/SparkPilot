@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 
 // 2. 外部依赖
 import createNextIntlPlugin from 'next-intl/plugin'
+import createMDX from '@next/mdx'
+import type { Options } from '@mdx-js/loader'
 
 // 3. 项目内部模块
 
@@ -14,6 +16,15 @@ import createNextIntlPlugin from 'next-intl/plugin'
 const withNextIntl = createNextIntlPlugin(
   './src/locales/requests.ts'  // 国际化配置文件路径
 )
+
+/**
+ * MDX 配置
+ * 用于处理 .mdx 文件的编译和转换
+ */
+const withMDX = createMDX({
+  options: {
+  } satisfies Partial<Options>,
+})
 
 /**
  * Next.js 主配置
@@ -34,5 +45,6 @@ const nextConfig: NextConfig = {
 }
 
 
-
-export default withNextIntl(nextConfig);
+// 导出最终配置
+// 使用 MDX 和国际化插件包装基础配置
+export default withNextIntl(withMDX(nextConfig))

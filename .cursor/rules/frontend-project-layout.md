@@ -8,8 +8,8 @@
 ├── components.json          # Components JSON
 ├── eslint.config.mjs        # ESLint configuration
 ├── messages
-│   ├── en.json
-│   └── zh.json
+│   ├── en.json             # English translations
+│   └── zh.json             # Chinese translations
 ├── next-env.d.ts           # Next.js TypeScript declarations
 ├── next.config.ts          # Next.js configuration
 ├── package.json            # Project dependencies and scripts
@@ -23,6 +23,17 @@
 │   │   │   │   └── welcome-toast.tsx
 │   │   │   ├── error.tsx
 │   │   │   ├── layout.tsx
+│   │   │   ├── legal
+│   │   │   │   ├── privacy
+│   │   │   │   │   ├── contents
+│   │   │   │   │   │   ├── en.privacy.mdx
+│   │   │   │   │   │   └── zh.privacy.mdx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── terms
+│   │   │   │       ├── contents
+│   │   │   │       │   ├── en.terms.mdx
+│   │   │   │       │   └── zh.terms.mdx
+│   │   │   │       └── page.tsx
 │   │   │   ├── loading.tsx
 │   │   │   └── page.tsx
 │   │   ├── api/          # API routes
@@ -34,7 +45,7 @@
 │   │   │   └── logo.tsx
 │   │   ├── layout
 │   │   │   └── theme-provider.tsx
-│   │   └── ui
+│   │   └── ui           # UI components (shadcn/ui)
 │   │       ├── accordion.tsx
 │   │       ├── alert-dialog.tsx
 │   │       ├── alert.tsx
@@ -95,6 +106,7 @@
 │   │   ├── config.ts
 │   │   ├── requests.ts
 │   │   └── types.ts
+│   ├── mdx-components.tsx  # MDX components configuration
 │   ├── scripts/         # Utility scripts
 │   ├── services/        # API services
 │   │   └── locale
@@ -110,7 +122,7 @@
 ├── tailwind.config.ts     # Tailwind CSS configuration
 └── tsconfig.json          # TypeScript configuration
 
-23 directories, 84 files
+28 directories, 91 files
 ```
 
 ## Directory Structure Details
@@ -129,12 +141,18 @@
 - `app/`: Next.js App Router 目录
   - `layout.tsx`: 根布局组件
   - `page.tsx`: 首页组件
+  - `(public)/`: 公共路由
+    - `legal/`: 法律相关页面
+      - `privacy/`: 隐私政策（多语言 MDX）
+      - `terms/`: 服务条款（多语言 MDX）
   - `globals.css`: 全局样式
   - `favicon.ico`: 网站图标
 
-### Static Assets (`public/`)
-- SVG 图标和图片
-- 可直接通过 URL 路径访问的静态资源
+### MDX Support
+- `mdx-components.tsx`: MDX 组件配置
+- 多语言 MDX 内容存放在各自路由的 `contents` 目录下
+  - `en.*.mdx`: 英文内容
+  - `zh.*.mdx`: 中文内容
 
 ## Planned Structure
 ```
